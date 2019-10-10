@@ -932,7 +932,7 @@ FunctionTensorPair createAndInitBasicFCNet(PlaceholderBindings &bindings,
   auto *fc = F->createFullyConnected(bindings, "fc", tr, 16);
   auto *rl0 = F->createRELU("relu", fc);
   auto *fc2 = F->createFullyConnected(bindings, "fc2", rl0, 8);
-  auto *rl1 = F->createRELU("relu", fc2);
+  auto *rl1 = F->createRELU("relu2", fc2);
   bindings.get(cast<Placeholder>(fc->getWeights()))->getHandle().clear(0.8);
   bindings.get(cast<Placeholder>(fc2->getWeights()))->getHandle().clear(1.5);
   auto *result = F->createSave("ret", rl1);
